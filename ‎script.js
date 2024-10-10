@@ -49,3 +49,64 @@ const alwaysGetData = obj.getData.bind(obj);
 // Приклад: викликаємо нову функцію декілька разів
 alwaysGetData();
 alwaysGetData();
+
+////////////////////////////////////////////////////////////////////
+console.log("=== Завдання 3 ===");
+
+function findFilesInFolder(folder) {
+  let files = [];
+
+  // Перевіряємо, чи є в папці діти
+  if (folder.children && folder.children.length > 0) {
+    folder.children.forEach((child) => {
+      if (child.type === "file") {
+        // Якщо це file, додаємо його ім'я до масиву
+        files.push(child.name);
+      } else if (child.type === "folder") {
+        // Якщо folder, рекурсивно викликаємо функцію для її вмісту
+        files = files.concat(findFilesInFolder(child));
+      }
+    });
+  }
+
+  return files;
+}
+
+// Приклад:
+const root = {
+  name: "name",
+  type: "folder",
+  children: [
+    {
+      name: "folder 1",
+      type: "folder",
+      children: [
+        {
+          name: "folder 2",
+          type: "folder",
+          children: [
+            {
+              name: "file 3",
+              type: "file",
+              size: 30,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "file 1",
+      type: "file",
+      size: 10,
+    },
+    {
+      name: "file 2",
+      type: "file",
+      size: 20,
+    },
+  ],
+};
+
+// Виклик функції для об'єкта root
+const files = findFilesInFolder(root);
+console.log(files);
