@@ -7,7 +7,7 @@ function addParamsToRequest(params) {
   return function (data) {
     count++;
 
-    // Повертаємо новий об'єкт, який містить params, data та count
+    // Новий об'єкт, який містить params, data та count
     return {
       ...params,
       data: data,
@@ -114,34 +114,40 @@ console.log(files);
 ////////////////////////////////////////////////////////////////////
 console.log("=== Завдання 4:ES6 ===");
 
+// Клас Людина
 class Human {
   constructor(name, phone) {
     this.name = name;
     this.phone = phone;
   }
 
+  // Метод:
   introduce() {
     console.log(`Привіт, мене звати ${this.name}, мій номер ${this.phone}.`);
   }
 }
 
+// Клас Студент
 class Student extends Human {
   constructor(name, phone, course) {
     super(name, phone);
     this.course = course;
   }
 
+  // Метод:
   study() {
     console.log(`Я навчаюся на ${this.course} курсі.`);
   }
 }
 
+// Клас Викладач
 class Teacher extends Human {
   constructor(name, phone, subject) {
     super(name, phone);
     this.subject = subject;
   }
 
+  // Метод:
   teach() {
     console.log(`Я викладаю ${this.subject}.`);
   }
@@ -160,35 +166,43 @@ teacher.teach();
 ////////////////////////////////////////////////////////////////////
 console.log("=== Завдання 4:ES5 ===");
 
+// Конструктор Людини
 function HumanES5(name, phone) {
   this.name = name;
   this.phone = phone;
 }
 
+// Метод:
 HumanES5.prototype.introduce = function () {
   console.log(`Привіт, мене звати ${this.name}, мій номер ${this.phone}.`);
 };
 
+// Конструктор Студента
 function StudentES5(name, phone, course) {
   HumanES5.call(this, name, phone);
   this.course = course;
 }
 
+// Наслідування методів Human
 StudentES5.prototype = Object.create(HumanES5.prototype);
 StudentES5.prototype.constructor = StudentES5;
 
+// Метод:
 StudentES5.prototype.study = function () {
   console.log(`Я навчаюся на ${this.course} курсі.`);
 };
 
+// Конструктор Викладача
 function TeacherES5(name, phone, subject) {
   HumanES5.call(this, name, phone);
   this.subject = subject;
 }
 
+// Наслідування методів Human
 TeacherES5.prototype = Object.create(HumanES5.prototype);
 TeacherES5.prototype.constructor = TeacherES5;
 
+// Метод:
 TeacherES5.prototype.teach = function () {
   console.log(`Я викладаю ${this.subject}.`);
 };
