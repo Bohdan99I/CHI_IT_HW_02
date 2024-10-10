@@ -156,3 +156,49 @@ student.study();
 const teacher = new Teacher("Марія", "789-012", "Математика");
 teacher.introduce();
 teacher.teach();
+
+////////////////////////////////////////////////////////////////////
+console.log("=== Завдання 4:ES5 ===");
+
+function HumanES5(name, phone) {
+  this.name = name;
+  this.phone = phone;
+}
+
+HumanES5.prototype.introduce = function () {
+  console.log(`Привіт, мене звати ${this.name}, мій номер ${this.phone}.`);
+};
+
+function StudentES5(name, phone, course) {
+  HumanES5.call(this, name, phone);
+  this.course = course;
+}
+
+StudentES5.prototype = Object.create(HumanES5.prototype);
+StudentES5.prototype.constructor = StudentES5;
+
+StudentES5.prototype.study = function () {
+  console.log(`Я навчаюся на ${this.course} курсі.`);
+};
+
+function TeacherES5(name, phone, subject) {
+  HumanES5.call(this, name, phone);
+  this.subject = subject;
+}
+
+TeacherES5.prototype = Object.create(HumanES5.prototype);
+TeacherES5.prototype.constructor = TeacherES5;
+
+TeacherES5.prototype.teach = function () {
+  console.log(`Я викладаю ${this.subject}.`);
+};
+
+// Студент
+const studentES5 = new StudentES5("Іван", "123-456", 3);
+student.introduce();
+student.study();
+
+// Викладач
+const teacherES5 = new TeacherES5("Марія", "789-012", "Математика");
+teacher.introduce();
+teacher.teach();
