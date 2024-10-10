@@ -110,3 +110,49 @@ const root = {
 // Виклик функції для об'єкта root
 const files = findFilesInFolder(root);
 console.log(files);
+
+////////////////////////////////////////////////////////////////////
+console.log("=== Завдання 4:ES6 ===");
+
+class Human {
+  constructor(name, phone) {
+    this.name = name;
+    this.phone = phone;
+  }
+
+  introduce() {
+    console.log(`Привіт, мене звати ${this.name}, мій номер ${this.phone}.`);
+  }
+}
+
+class Student extends Human {
+  constructor(name, phone, course) {
+    super(name, phone);
+    this.course = course;
+  }
+
+  study() {
+    console.log(`Я навчаюся на ${this.course} курсі.`);
+  }
+}
+
+class Teacher extends Human {
+  constructor(name, phone, subject) {
+    super(name, phone);
+    this.subject = subject;
+  }
+
+  teach() {
+    console.log(`Я викладаю ${this.subject}.`);
+  }
+}
+
+// Студент
+const student = new Student("Іван", "123-456", 3);
+student.introduce();
+student.study();
+
+// Викладач
+const teacher = new Teacher("Марія", "789-012", "Математика");
+teacher.introduce();
+teacher.teach();
