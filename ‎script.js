@@ -43,6 +43,9 @@ const person = {
   age: 30,
 };
 
+// Метод getData, використовуючи call
+obj.getData.call(person);
+
 // Створюємо функцію з прив'язаним контекстом
 const alwaysGetData = obj.getData.bind(person);
 
