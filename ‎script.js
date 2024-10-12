@@ -43,13 +43,8 @@ const person = {
   age: 30,
 };
 
-// Викликаємо метод getData, використовуючи call
-obj.getData.call(person);
-
-// Функція, яка завжди викликає getData з контекстом person
-function alwaysGetData() {
-  obj.getData.call(person);
-}
+// Створюємо функцію з прив'язаним контекстом
+const alwaysGetData = obj.getData.bind(person);
 
 // Приклад: викликаємо нову функцію декілька разів
 alwaysGetData();
