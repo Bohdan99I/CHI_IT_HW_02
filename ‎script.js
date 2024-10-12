@@ -33,18 +33,23 @@ console.log(result3);
 console.log("=== Завдання 2 ===");
 
 const obj = {
-  name: "John",
-  age: 30,
   getData: function () {
     console.log(`Person name is: ${this.name} and age ${this.age}`);
   },
 };
 
-// Викликаємо метод getData, використовуючи об'єкт obj
-obj.getData();
+const person = {
+  name: "John",
+  age: 30,
+};
 
-// Функція, яка завжди викликає getData з контекстом obj
-const alwaysGetData = obj.getData.bind(obj);
+// Викликаємо метод getData, використовуючи call
+obj.getData.call(person);
+
+// Функція, яка завжди викликає getData з контекстом person
+function alwaysGetData() {
+  obj.getData.call(person);
+}
 
 // Приклад: викликаємо нову функцію декілька разів
 alwaysGetData();
